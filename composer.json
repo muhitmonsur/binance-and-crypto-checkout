@@ -2,11 +2,14 @@
     "name": "payerurl/binance-and-crypto-checkout",
     "description": "Binance and crypto payment gateway",
     "keywords": [
-        "Payerurl",
-        "Laravel Payerurl",
-        "Payerurl",
-        "Coin Base",
-        "Bit Coin"
+        "Binance",
+        "USDT",
+        "USDC",
+        "bitcoin",
+        "crypto payment",
+        "coinbase",
+        "paypal",
+        "ethereum"
     ],
     "type": "package",
     "license": "MIT",
