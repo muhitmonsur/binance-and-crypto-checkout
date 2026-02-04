@@ -1,0 +1,39 @@
+{
+    "name": "payerurl/binance-and-crypto-checkout",
+    "description": "Binance and crypto payment gateway",
+    "keywords": [
+        "Payerurl",
+        "Laravel Payerurl",
+        "Payerurl",
+        "Coin Base",
+        "Bit Coin"
+    ],
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Payerurl\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rashiqul Rony",
+            "email": "rashiqulrony@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.0|^8.0",
+        "laravel/framework": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Payerurl\\Providers\\AppServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
