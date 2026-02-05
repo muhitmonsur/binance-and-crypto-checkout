@@ -9,7 +9,7 @@
         "crypto payment",
         "coinbase",
         "paypal",
-        "ethereum"
+,        "ethereum"
     ],
     "type": "package",
     "license": "MIT",
