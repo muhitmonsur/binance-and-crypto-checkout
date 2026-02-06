@@ -18,7 +18,7 @@ The package serves as a seamless bridge between Binance and your Laravel applica
 * **Cost-Effective**: Incurs no network fees or additional hidden costs.
 * **Secure**: Enhanced security protocols help avoid scams and ensure transaction safety.
 
-### [LIVE DEMO](https://payerurl.com/)
+### <a href="https://payerurl.com/" target="_blank">LIVE DEMO</a>
 
 ### How This Package Works
 
@@ -97,7 +97,7 @@ Handles the payment process with PayerURL API and redirects the customer to the 
 
 Get your API key: https://dash.payerurl.com/profile/get-api-credentials
 
-<img src="https://raw.githubusercontent.com/RashiqulRony/rony.mmj/refs/heads/master/payerurl.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-2.png">
 
 ### Using .env
 
@@ -174,6 +174,18 @@ $response = Payerurl::payment($invoiceId, $amount, $currency, $data);
 'status' => false,
 'message' => "Something went wrong. Please try again.",
 ```
+
+
+
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/banner-772x250.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-1.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-2.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-4.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-5.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-6.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-7.png">
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-8.png">
+
 
 ## License
 
