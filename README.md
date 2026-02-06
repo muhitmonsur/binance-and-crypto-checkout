@@ -4,12 +4,14 @@
 [![Total Downloads](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/downloads)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
 [![License](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/license)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
 
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/banner-772x250.png">
 ## Introduction
 
 The Binance and Crypto Payment Gateway Laravel package is powered by Payerurl. This package acts as a robust cryptocurrency payment processor, allowing merchants and developers to receive customer payments directly into their crypto wallets without the need for a middleman or intermediary account. We specialize in Binance QR code payments, providing a smooth, integrated experience where users never have to leave your Laravel application to complete a transaction.
 
-### Binance QR Code Payment
 
+### Binance QR Code Payment
+<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-5.png">
 This package is the ideal solution for developers seeking a secure Binance payment integration for Laravel. Binance Pay is a contactless, borderless, and highly secure payment method. By using this package, you can accept payments via Binance QR codes and process transactions through the Binance personal account API.
 
 The package serves as a seamless bridge between Binance and your Laravel application. Customers simply scan the generated QR code on your checkout page to finish the transaction. This process is:
@@ -177,11 +179,9 @@ $response = Payerurl::payment($invoiceId, $amount, $currency, $data);
 
 
 
-<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/banner-772x250.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-1.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-2.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-4.png">
-<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-5.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-6.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-7.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-8.png">
