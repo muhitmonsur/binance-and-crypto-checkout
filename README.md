@@ -4,181 +4,152 @@
 [![Total Downloads](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/downloads)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
 [![License](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/license)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
 
-<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/banner-772x250.png">
-## Introduction
+![Banner](https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/banner-772x250.png)
 
-The Binance and Crypto Payment Gateway Laravel package is powered by Payerurl. This package acts as a robust cryptocurrency payment processor, allowing merchants and developers to receive customer payments directly into their crypto wallets without the need for a middleman or intermediary account. We specialize in Binance QR code payments, providing a smooth, integrated experience where users never have to leave your Laravel application to complete a transaction.
+---
 
+## 🚀 Introduction
 
-### Binance QR Code Payment
-<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-5.png">
-This package is the ideal solution for developers seeking a secure Binance payment integration for Laravel. Binance payment is a contactless, borderless, and highly secure payment method. By using this package, you can accept payments via Binance QR codes and process transactions through the Binance personal account API.
+**Binance & Crypto Checkout for Laravel** is a secure cryptocurrency payment gateway powered by **Payerurl**.
 
-The package serves as a seamless bridge between Binance and your Laravel application. Customers simply scan the generated QR code on your checkout page to finish the transaction. This process is:
+It enables merchants to accept crypto payments directly into their wallets without intermediaries.
 
-* **Fast and Simple**: No complex redirects or external logins for the user.
-* **Cost-Effective**: Incurs no network fees or additional hidden costs.
-* **Secure**: Enhanced security protocols help avoid scams and ensure transaction safety.
+Customers never leave your Laravel checkout page.
 
-### <a href="https://payerurl.com/" target="_blank">LIVE DEMO</a>
+---
 
-### How This Package Works
+## 💳 Supported Payment Methods
 
-The Binance and Crypto Payment Gateway automatically converts any fiat currency to the selected cryptocurrency using live exchange rates. Once the payment is verified, funds are credited instantly to the merchant's wallet. The package then utilizes a secure API response to update your application's order status (e.g., from "Pending" to "Processing") in real-time.
+- Binance QR Code
+- Binance Pay
+- USDT (TRC20 / ERC20)
+- USDC (ERC20)
+- Bitcoin (BTC)
+- Ethereum (ETH ERC20)
 
-### Key Features
+---
 
-* **Extensive Network Support**: Supports Binance QR payment, Binance Pay, USDT (TRC20/ERC20), USDC (ERC20), Bitcoin (BTC), and Ethereum (ETH ERC20).
-* **Fiat Compatibility**: Supports over 169+ fiat currencies (USD, CAD, GBP, EUR, etc.) with real-time exchange rates powered by payerurl.com.
-* **Developer Friendly**: 100% Free Open Source package designed specifically for the Laravel ecosystem.
-* **Privacy Focused**: No bank account or mandatory personal identity verification required.
-* **Simple Integration**: Streamlined signup process with easy API key integration.
-* **Accessibility**: No KYC required for withdrawals on Basic accounts.
-* **Dedicated Support**: 24/7 technical assistance for integration via Telegram: https://t.me/Payerurl.
-* **Compatibility**: Optimized for Laravel 8.x, 9.x, 10.x, and 11.x.
+## 🌍 Key Features
 
-### About Payerurl
+- ✅ 169+ Fiat Currency Support (USD, EUR, GBP, CAD, BDT, etc.)
+- ✅ Real-Time Exchange Rate Conversion
+- ✅ Direct Wallet Settlement
+- ✅ No KYC Required (Basic Accounts)
+- ✅ Secure API Verification
+- ✅ Instant Order Status Update
+- ✅ 100% Free & Open Source
+- ✅ Laravel 8, 9, 10, 11 Compatible
+- ✅ 24/7 Telegram Support
 
-Payerurl is a premier payment processor enabling direct cryptocurrency transfers from customers to merchant wallets. Merchants can integrate Binance personal/merchant APIs alongside various receiving wallets including USDT, BTC, ETH, and USDC. We utilize live market rates to ensure accurate conversion from local fiat currencies to the corresponding cryptocurrency amount.
+---
 
-## Installation
+## 🔗 Live Demo
+
+👉 https://payerurl.com/
+
+---
+
+## 📦 Installation
 
 ```bash
 composer require payerurl/binance-and-crypto-checkout
 ```
-
-#### Publish config file
-
-You should publish the config file with:
-
+## ⚙️Publish Configuration
 ```bash
 php artisan vendor:publish --provider="Payerurl\Providers\AppServiceProvider" --tag=config
 ```
 
-In `config/payerurl.php` config file you should set `payerurl` global path.
+## 🔑 Environment Configuration
+Add your API credentials to .env:
+```
+PAYERURL_PUBLIC_KEY="your_public_key"
+PAYERURL_SECRET_KEY="your_secret_key"
+```
+Get your API keys from: https://dash.payerurl.com/profile/get-api-credentials
 
+## 💳 Payment Integration
+#### 📌 Function Signature
 ```php
-return [
-     /*
-    |--------------------------------------------------------------------------
-    | API URL
-    |--------------------------------------------------------------------------
-    |
-    |
-    */
-
-    'api_url' => "https://api-v2.payerurl.com/api/payment",
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | PayerUrl API credentials
-    |--------------------------------------------------------------------------
-    |
-    | PayerUrl API credentials
-    | Do not share the credentials
-    | Get your API key : https://dash.payerurl.com/profile/get-api-credentials
-    |
-    |
-    */
-
-    'public_key' => env('PAYERURL_PUBLIC_KEY'),
-    'secret_key' => env('PAYERURL_SECRET_KEY'),
-];
+payment($invoiceId, $amount, $currency = 'usd', $data)
 ```
-
-## 💳 PayerURL Payment Integration – Laravel
-
-This method allows you to integrate with the PayerURL Payment Gateway using a simple PHP function. It's designed for systems where server-to-server communication is preferred over frontend SDKs.
-
-## 📌 Function: payment($invoiceId, $amount, $currency = 'usd', $data)
-
-Handles the payment process with PayerURL API and redirects the customer to the payment page.
-
-## 🔑 GET API KEY
-
-Get your API key: https://dash.payerurl.com/profile/get-api-credentials
-
-<img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-2.png">
-
-### Using .env
-
-```env
-PAYERURL_PUBLIC_KEY="Your_public_key"
-PAYERURL_SECRET_KEY="Your_secret_key"
-```
-
 ## ✅ Required Parameters
+| Parameter  | Type   | Required | Description                           |
+| ---------- | ------ | -------- | ------------------------------------- |
+| $invoiceId | string | Yes      | Unique Order ID                       |
+| $amount    | int    | Yes      | Amount in smallest unit (e.g., cents) |
+| $currency  | string | No       | Default: usd                          |
+| $data      | array  | Yes      | Customer & URL information            |
 
-| Name | Type | Required | Description |
-| --- | --- | --- | --- |
-| $invoiceId | string | ✅ | Unique invoice or order ID. |
-| $amount | int | ✅ | Payment amount (in smallest currency unit, e.g., cents). |
-| $currency | string | ❌ | Currency code (e.g., usd, bdt). Default: usd. |
-| $data | array | ✅ | Contains customer info, redirect URLs, and API credentials. |
-
-## 🔑 $data Array Structure
-
+## 📦 $data Array Structure
 ```php
 $data = [
-    'first_name'   => 'John',             // Optional
-    'last_name'    => 'Doe',              // Optional
-    'email'        => 'john@example.com', // Optional
+    'first_name'   => 'John',
+    'last_name'    => 'Doe',
+    'email'        => 'john@example.com',
     'redirect_url' => 'https://yourdomain.com/payment-success',
     'notify_url'   => 'https://yourdomain.com/api/payment-notify',
     'cancel_url'   => 'https://yourdomain.com/checkout'
 ];
 ```
-
-## 🚀 How It Works
-
-1. Collect user and order info on your platform.
-2. Call the payment() function with required details.
-3. User is redirected to PayerURL payment page.
-4. After payment:
-   * User is redirected to redirect_url.
-   * Your backend receives a callback at notify_url with transaction details.
-   * On cancellation, user is returned to cancel_url.
-
-## 🧪 Sample Usage
-
+## 🧪 Example Controller Integration
 ```php
 use Payerurl\Payerurl;
 
-$invoiceId = 'INV-1001';
-$amount = 1000; // $10.00
-$currency = 'usd';
+public function pay()
+{
+    $invoiceId = 'INV-1001';
+    $amount = 1000; // $10.00
+    $currency = 'usd';
 
-$data = [
-    'first_name' => 'Alice',
-    'last_name' => 'Smith',
-    'email' => 'alice@example.com',
-    'redirect_url' => 'https://yoursite.com/payment-success',
-    'notify_url' => 'https://yoursite.com/api/payment-notify',
-    'cancel_url' => 'https://yoursite.com/cart'
-];
+    $data = [
+        'first_name' => 'Alice',
+        'last_name' => 'Smith',
+        'email' => 'alice@example.com',
+        'redirect_url' => route('payment.success'),
+        'notify_url' => route('payment.notify'),
+        'cancel_url' => route('cart')
+    ];
 
-$response = Payerurl::payment($invoiceId, $amount, $currency, $data);
+    $response = Payerurl::payment($invoiceId, $amount, $currency, $data);
+
+    if ($response['status']) {
+        return redirect($response['redirectUrl']);
+    }
+
+    return back()->with('error', $response['message']);
+}
 ```
 
-## 🧪 Response
-
-#### Payment success
+## 🔔 Webhook (Payment Notify) Example
+Add route:
 
 ```php
-'status' => true,
-'redirectUrl' => "https://dash.payerurl.com/payment/WP112*****", // Payment page URL
+Route::post('/payment-notify', [PaymentController::class, 'notify'])->name('payment.notify');
 ```
-
-#### Payment Error
-
+## 🔄 API Response
+#### ✅ Success
 ```php
-'status' => false,
-'message' => "Something went wrong. Please try again.",
+[
+    'status' => true,
+    'redirectUrl' => "https://dash.payerurl.com/payment/WP112XXXXX"
+]
+```
+#### ❌ Error
+```php
+[
+    'status' => false,
+    'message' => "Something went wrong. Please try again."
+]
 ```
 
+## 🔐 Security
 
+- ✅ Secure server-to-server API communication
+- ✅ Callback verification
+- ✅ API key authentication
+- ✅ No sensitive customer data stored
 
+## 🖼 Screenshots
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-1.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-2.png">
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-4.png">
@@ -187,14 +158,11 @@ $response = Payerurl::payment($invoiceId, $amount, $currency, $data);
 <img src="https://raw.githubusercontent.com/muhitmonsur/assets/refs/heads/main/screenshot-8.png">
 
 
-## License
 
-This package is open-sourced software licensed under the [MIT license](LICENSE).
+## 🧾 License
+This package is open-sourced software licensed under the MIT License.
 
-## Support
-
-For support and questions, please contact us via:
-- Telegram: https://t.me/Payerurl
-- Website: https://payerurl.com
-
----
+## 📞 Support
+#### 🌐 Website: https://payerurl.com
+#### 📞 Telegram: https://t.me/Payerurl
+#### 📧 Email: support@payerurl.com
