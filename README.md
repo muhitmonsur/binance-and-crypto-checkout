@@ -45,7 +45,7 @@ Customers never leave your Laravel checkout page.
 
 ## 🔗 Live Demo
 
-👉 https://payerurl.com/
+👉 [Laravel Binance QR and Crypto payment | Payerurl](https://payerurl.com/)
 
 ---
 
