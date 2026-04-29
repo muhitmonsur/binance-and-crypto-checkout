@@ -26,10 +26,6 @@ The projects serves as a seamless bridge between Binance and your Python applica
 
 ---
 
-## 📞 Contact US
-#### 🌐 Website: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://payerurl.com</a>
-#### 📞 Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl (live chat)</a>
-#### 📧 Email: support@payerurl.com
 
 ## 💳 Supported Payment Methods
 
@@ -56,6 +52,11 @@ The projects serves as a seamless bridge between Binance and your Python applica
 - ✅ 24/7 Telegram Support
 
 ---
+
+## 📞 Contact US
+#### 🌐 Website: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://payerurl.com</a>
+#### 📞 Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl (live chat)</a>
+#### 📧 Email: support@payerurl.com
 
 ## 🔗 Live Demo
 
