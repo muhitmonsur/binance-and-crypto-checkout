@@ -8,14 +8,10 @@
 
 ---
 
-# Support
-- Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl</a>
-- Dashboard: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://dash.payerurl.com</a>
-
 
 ## Introduction
 
-The Binance and Crypto Payment Gateway python projects is powered by Payerurl. This package acts as a robust cryptocurrency payment processor, allowing merchants and developers to receive customer payments directly into their crypto wallets without the need for a middleman or intermediary account. We specialize in Binance QR code payments, providing a smooth, integrated experience where users never have to leave your python application to complete a transaction.
+The Binance and Crypto Payment Gateway python projects is powered by Payerurl. This package acts as a robust cryptocurrency payment processor, allowing merchants and developers to receive customer payments directly into their crypto wallets without the need for a middleman or intermediary account. We specialize in Binance QR code payments, providing a smooth, integrated experience where users never have to leave your laravel application to complete a transaction.
 
 
 ### Binance QR Code Payment
@@ -30,12 +26,22 @@ The projects serves as a seamless bridge between Binance and your Python applica
 
 ---
 
+# Support
+- Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl</a>
+- Dashboard: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://dash.payerurl.com</a>
+
+## 📞 Contact US
+#### 🌐 Website: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://payerurl.com</a>
+#### 📞 Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl (live chat)</a>
+#### 📧 Email: support@payerurl.com
+
 ## 💳 Supported Payment Methods
 
 - Binance QR Code
-- Binance Pay
+- USDT (BEP20)
 - USDT (TRC20 / ERC20)
 - USDC (ERC20)
+- USDC (BEP20)
 - Bitcoin (BTC)
 - Ethereum (ETH ERC20)
 
@@ -110,7 +116,7 @@ use Payerurl\Payerurl;
 public function pay()
 {
     $invoiceId = 'INV-1001';
-    $amount = 1000; // $10.00
+    $amount = 1000; // $1000.00
     $currency = 'usd';
 
     $data = [
@@ -139,7 +145,7 @@ Add route:
 Route::post('/payment-notify', [PaymentController::class, 'notify'])->name('payment.notify');
 ```
 ## 🔄 API Response
-#### ✅ Success
+#### ✅ payment request
 ```php
 [
     'status' => true,
@@ -176,5 +182,5 @@ This package is open-sourced software licensed under the MIT License.
 
 ## 📞 Support
 #### 🌐 Website: https://payerurl.com
-#### 📞 Telegram: https://t.me/Payerurl
+#### 📞 Telegram: https://t.me/Payerurl (live chat)
 #### 📧 Email: support@payerurl.com
