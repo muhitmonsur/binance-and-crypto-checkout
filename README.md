@@ -26,10 +26,6 @@ The projects serves as a seamless bridge between Binance and your Python applica
 
 ---
 
-# Support
-- Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl</a>
-- Dashboard: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://dash.payerurl.com</a>
-
 ## 📞 Contact US
 #### 🌐 Website: <a href="https://payerurl.com" target="_blank" rel="noopener noreferrer">https://payerurl.com</a>
 #### 📞 Telegram: <a href="https://t.me/Payerurl" target="_blank" rel="noopener noreferrer">https://t.me/Payerurl (live chat)</a>
