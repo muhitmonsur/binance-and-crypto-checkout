@@ -1,4 +1,4 @@
-# Binance & Crypto Checkout for Laravel
+# Laravel-based Binance and Crypto payment gateway
 
 [![Latest Stable Version](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/v/stable)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
 [![Total Downloads](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/downloads)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
@@ -11,7 +11,7 @@
 
 ## Introduction
 
-The Binance and Crypto Payment Gateway python projects is powered by Payerurl. This package acts as a robust cryptocurrency payment processor, allowing merchants and developers to receive customer payments directly into their crypto wallets without the need for a middleman or intermediary account. We specialize in Binance QR code payments, providing a smooth, integrated experience where users never have to leave your laravel application to complete a transaction.
+Our Laravel-based Binance and Crypto Checkout solution is powered by Payerurl. This robust payment processor enables merchants and website owners to receive cryptocurrency payments directly into their personal wallets, eliminating the need for intermediary accounts. By supporting Binance QR code payments, we offer a seamless checkout experience that keeps users on your site throughout the entire transaction.
 
 
 ### Binance QR Code Payment
