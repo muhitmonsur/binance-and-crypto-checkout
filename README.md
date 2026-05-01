@@ -29,11 +29,9 @@ The projects serves as a seamless bridge between Binance and your Python applica
 
 ## 💳 Supported Payment Methods
 
-- Binance QR Code
-- USDT (BEP20)
-- USDT (TRC20 / ERC20)
-- USDC (ERC20)
-- USDC (BEP20)
+- Binance QR Code payment
+- USDT (TRC20 / ERC20 / BEP20)
+- USDC (BEP20 / ERC20)
 - Bitcoin (BTC)
 - Ethereum (ETH ERC20)
 
