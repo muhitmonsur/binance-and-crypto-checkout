@@ -1,4 +1,4 @@
-# Laravel Crypto Payment Gateway: Accept Binance Payments Without a Merchant Account: Fast Laravel Crypto USDT, USDC, BTC, ETH API integration in 10 Minutes
+# Laravel Crypto Payment Gateway: Accept Binance Payments Without a Merchant Account: Fast Laravel USDT, USDC, BTC, ETH API integration in 10 Minutes
 
 [![Latest Stable Version](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/v/stable)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
 [![Total Downloads](https://poser.pugx.org/payerurl/binance-and-crypto-checkout/downloads)](https://packagist.org/packages/payerurl/binance-and-crypto-checkout)
