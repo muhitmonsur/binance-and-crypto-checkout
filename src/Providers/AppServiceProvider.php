@@ -31,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../config/payerurl.php' => config_path('payerurl.php'),
         ], 'config');
+
+        if (config('payerurl.route.enabled', true)) {
+            $this->loadRoutesFrom(__DIR__.'/../../routes/payerurl.php');
+        }
     }
 }

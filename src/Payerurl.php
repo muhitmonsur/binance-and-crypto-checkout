@@ -20,12 +20,10 @@ class Payerurl
             $redirect_to = $data['redirect_url']; //(order receive page)
 
             /**
-             * THIS IS VERY IMPORTANT VARIABLE
-             * Response URL/Callback URL our system will only send response to this url
+             * Callback URL — Payerurl POSTs payment details here after checkout.
+             * Uses the package route: POST /payerurl/notify (name: payerurl.notify)
              */
-
-            #Note: after payment complete our system automatically sent payment detail on this notify_url in few seconds.
-            $notify_url = $data['notify_url'];  //(system will send payment info in this page)
+            $notify_url = route('payerurl.notify');
 
 
             /**

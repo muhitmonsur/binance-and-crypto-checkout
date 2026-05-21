@@ -100,10 +100,11 @@ $data = [
     'last_name'    => 'Doe',
     'email'        => 'john@example.com',
     'redirect_url' => 'https://yourdomain.com/payment-success',
-    'notify_url'   => 'https://yourdomain.com/api/payment-notify',
     'cancel_url'   => 'https://yourdomain.com/checkout'
 ];
 ```
+
+The package registers a webhook route automatically (`POST /payerurl/notify`, route name `payerurl.notify`). You do not need to pass `notify_url` in `$data`.
 ## 🧪 Example Controller Integration
 ```php
 use Payerurl\Payerurl;
@@ -119,7 +120,6 @@ public function pay()
         'last_name' => 'Smith',
         'email' => 'alice@example.com',
         'redirect_url' => route('payment.success'),
-        'notify_url' => route('payment.notify'),
         'cancel_url' => route('cart')
     ];
 
@@ -133,12 +133,40 @@ public function pay()
 }
 ```
 
-## 🔔 Webhook (Payment Notify) Example
-Add route:
+## 🔔 Webhook (Payment Notify)
+
+After payment, Payerurl POSTs to the package endpoint:
+
+- **URL:** `POST {APP_URL}/payerurl/notify`
+- **Route name:** `payerurl.notify`
+
+Verification (public key, signature, order fields) is handled by the package. On successful payment (`status_code` 200), it fires `Payerurl\Events\PaymentNotifySuccess`.
+
+Listen in `app/Providers/EventServiceProvider.php`:
 
 ```php
-Route::post('/payment-notify', [PaymentController::class, 'notify'])->name('payment.notify');
+use Payerurl\Events\PaymentNotifySuccess;
+
+protected $listen = [
+    PaymentNotifySuccess::class => [
+        \App\Listeners\UpdateOrderOnPayerurlPayment::class,
+    ],
+];
 ```
+
+Example listener:
+
+```php
+public function handle(PaymentNotifySuccess $event): void
+{
+    $orderId = $event->payload['order_id'];
+    // Update your order status here
+}
+```
+
+If your app uses the `web` middleware group on this route, exclude CSRF for the webhook in `bootstrap/app.php` or `VerifyCsrfMiddleware` (`payerurl/notify`).
+
+Optional logging: set `PAYERURL_LOG_NOTIFICATIONS=true` in `.env`.
 ## 🔄 API Response
 #### ✅ payment request
 ```php
