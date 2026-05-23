@@ -7,7 +7,7 @@
 
 **Powered by [PayerURL](https://payerurl.com)** — the direct-to-wallet crypto payment processor for Laravel developers.
 
-🔴 **[LIVE DEMO](https://payerurl.com/)** | 🔑 **[Get API Key](https://dash.payerurl.com)** | 💬 **[Telegram Support](https://t.me/Payerurl)**
+🔴 **[LIVE DEMO](https://laravel.payerurl.com/)** | 🔑 **[Get API Key](https://dash.payerurl.com)** | 💬 **[Telegram Support](https://t.me/Payerurl)**
 
 ---
 
@@ -306,7 +306,7 @@ The package auto-registers the webhook route. Listen for the `PaymentNotifySucce
 | 🌐 Website | [payerurl.com](https://payerurl.com) |
 | 📧 Email | support@payerurl.com |
 | 📊 Dashboard | [dash.payerurl.com](https://dash.payerurl.com) |
-| 🔴 Live Demo | [payerurl.com](https://payerurl.com) |
+| 🔴 Live Demo | [payerurl.com](https://laravel.payerurl.com/) |
 
 ---
 
