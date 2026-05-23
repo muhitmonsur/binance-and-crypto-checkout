@@ -2,107 +2,138 @@
 
 namespace Payerurl\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Payerurl\Events\PaymentNotifySuccess;
 
 class NotifyController extends Controller
 {
-    public function handle(Request $request): JsonResponse
+    public function payerurlCallback(Request $request)
     {
-        $payerurlPublicKey = config('payerurl.public_key');
-        $payerurlSecretKey = config('payerurl.secret_key');
+        /**
+         * Payerurl API credentials
+         */
+        $payerurl_public_key = config('payerurl.public_key');
+        $payerurl_secret_key = config('payerurl.secret_key');
 
-        $auth = $this->resolveAuth($request);
+        $headers = $request->headers->all();
+        $auth = [];
 
-        if ($payerurlPublicKey !== ($auth[0] ?? null)) {
-            return $this->jsonResponse(2030, 'Public key doesn\'t match');
-        }
+        // Get Authorization Header
+        if (!$request->header('Authorization')) {
 
-        $getData = [
-            'order_id' => $request->input('order_id'),
-            'ext_transaction_id' => $request->input('ext_transaction_id'),
-            'transaction_id' => $request->input('transaction_id'),
-            'status_code' => $request->input('status_code'),
-            'note' => $request->input('note'),
-            'confirm_rcv_amnt' => $request->input('confirm_rcv_amnt'),
-            'confirm_rcv_amnt_curr' => $request->input('confirm_rcv_amnt_curr'),
-            'coin_rcv_amnt' => $request->input('coin_rcv_amnt'),
-            'coin_rcv_amnt_curr' => $request->input('coin_rcv_amnt_curr'),
-            'txn_time' => $request->input('txn_time'),
-        ];
+            if (!$request->has('authStr')) {
+                return response()->json([
+                    'status' => 2030,
+                    'message' => 'Authorization not found'
+                ]);
+            }
 
-        if (empty($getData['transaction_id'])) {
-            return $this->jsonResponse(2050, 'Transaction ID not found');
-        }
+            $authStr_post = base64_decode($request->authStr);
+            $auth = explode(':', $authStr_post);
 
-        if (empty($getData['order_id'])) {
-            return $this->jsonResponse(2050, 'Order ID not found');
-        }
-
-        if ((int) $getData['status_code'] === 20000) {
-            return $this->jsonResponse(20000, 'Order Cancelled');
-        }
-
-        if ((int) $getData['status_code'] !== 200) {
-            return $this->jsonResponse(2050, 'Order not complete');
-        }
-
-        ksort($getData);
-        $queryString = http_build_query($getData);
-        $signature = hash_hmac('sha256', $queryString, $payerurlSecretKey);
-
-        if (!hash_equals($signature, $auth[1] ?? '')) {
-            return $this->jsonResponse(2030, 'Signature not matched');
-        }
-
-        event(new PaymentNotifySuccess($getData));
-
-        $data = ['status' => 2040, 'message' => $getData];
-
-        if (config('payerurl.log_notifications', false)) {
-            Log::info('Payerurl notify', $data);
-        }
-
-        return response()->json($data, 200, [], JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-     * @return array{0: string|null, 1: string|null}
-     */
-    protected function resolveAuth(Request $request): array
-    {
-        $authorization = $request->header('Authorization');
-
-        if ($authorization) {
-            $authStr = str_replace('Bearer ', '', $authorization);
-            $authStr = base64_decode($authStr, true);
         } else {
-            $authStrPost = $request->input('authStr');
-            $authStr = $authStrPost ? base64_decode($authStrPost, true) : false;
+
+            $authStr = str_replace('Bearer ', '', $request->header('Authorization'));
+            $authStr = base64_decode($authStr);
+            $auth = explode(':', $authStr);
         }
 
-        if ($authStr === false) {
-            return [null, null];
+        /**
+         * Check Public Key
+         */
+        if (!isset($auth[0]) || $payerurl_public_key != $auth[0]) {
+
+            return response()->json([
+                'status' => 2030,
+                'message' => "Public key doesn't match"
+            ]);
         }
 
-        $auth = explode(':', $authStr, 2);
-
-        return [
-            $auth[0] ?? null,
-            $auth[1] ?? null,
+        /**
+         * Get Data
+         */
+        $GETDATA = [
+            'order_id'             => $request->order_id,
+            'ext_transaction_id'   => $request->ext_transaction_id,
+            'transaction_id'       => $request->transaction_id,
+            'status_code'          => $request->status_code,
+            'note'                 => $request->note,
+            'confirm_rcv_amnt'     => $request->confirm_rcv_amnt,
+            'confirm_rcv_amnt_curr'=> $request->confirm_rcv_amnt_curr,
+            'coin_rcv_amnt'        => $request->coin_rcv_amnt,
+            'coin_rcv_amnt_curr'   => $request->coin_rcv_amnt_curr,
+            'txn_time'             => $request->txn_time,
         ];
-    }
 
-    protected function jsonResponse(int $status, string $message): JsonResponse
-    {
-        return response()->json(
-            ['status' => $status, 'message' => $message],
-            200,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
+        /**
+         * Validation
+         */
+        if (empty($GETDATA['transaction_id'])) {
+
+            return response()->json([
+                'status' => 2050,
+                'message' => 'Transaction ID not found'
+            ]);
+        }
+
+        if (empty($GETDATA['order_id'])) {
+
+            return response()->json([
+                'status' => 2050,
+                'message' => 'Order ID not found'
+            ]);
+        }
+
+        /**
+         * Order Cancelled
+         */
+        if ($GETDATA['status_code'] == 20000) {
+
+            return response()->json([
+                'status' => 20000,
+                'message' => 'Order Cancelled'
+            ]);
+        }
+
+        /**
+         * Order Not Complete
+         */
+        if ($GETDATA['status_code'] != 200) {
+
+            return response()->json([
+                'status' => 2050,
+                'message' => 'Order not complete'
+            ]);
+        }
+
+        /**
+         * ADVANCE SECURITY CHECK
+         */
+        ksort($GETDATA);
+
+        $args = http_build_query($GETDATA);
+
+        // Correct Signature Generate
+        $signature = hash_hmac('sha256', $args, $payerurl_secret_key);
+
+        if (!isset($auth[1]) || !hash_equals($signature, $auth[1])) {
+
+            return response()->json([
+                'status' => 2030,
+                'message' => 'Signature not matched'
+            ]);
+        }
+
+        /**
+         * Log Data
+         */
+        Log::channel('single')->info('Payerurl Callback', $GETDATA);
+
+        return response()->json([
+            'status' => 2040,
+            'message' => $GETDATA
+        ]);
+
     }
 }
