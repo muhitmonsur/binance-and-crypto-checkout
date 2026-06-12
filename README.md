@@ -73,7 +73,7 @@ use Payerurl\Payerurl;
 
 public function pay()
 {
-    $invoiceId = 'INV-1001';
+    $invoiceId = 'LRV-' . time();
     $amount    = 1000; // $1000.00
     $currency  = 'usd';
 
