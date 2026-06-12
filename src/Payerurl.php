@@ -4,7 +4,7 @@ namespace Payerurl;
 
 class Payerurl
 {
-    public static function payment($invoiceId, $amount, $currency = 'usd', $data)
+    public static function payment($invoiceId, $totalAmount, $currency = 'usd', $data, $orderItems)
     {
         try {
             /**
@@ -43,21 +43,21 @@ class Payerurl
             /**
              * Order items
              */
-            $items = [
+            /*$items = [
                 [
                     'name' => str_replace(' ', '_', 'Order item name'), // Replace spaces with '_' , no space allowed
                     'qty' => 'Order item quantity',
                     'price' => '123',
                 ]
-            ];
+            ];*/
 
             /**
              * API params
              */
             $args = [
                 'order_id'      => $invoiceId,  // must be unique
-                'amount'        => $amount, //integer value
-                'items'         => $items,
+                'amount'        => $totalAmount, //integer value
+                'items'         => $orderItems,
                 'currency'      => $currency,  // currency in small letter
                 'billing_fname' => $billing_fname,
                 'billing_lname' => $billing_lname,
@@ -79,6 +79,7 @@ class Payerurl
             /**
              * Send API response
              */
+
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, config('payerurl.api_url'));
             curl_setopt($ch, CURLOPT_POST, TRUE);

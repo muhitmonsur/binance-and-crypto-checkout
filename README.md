@@ -77,6 +77,15 @@ public function pay()
     $amount    = 1000; // $1000.00
     $currency  = 'usd';
 
+    // $orderItems Is optional
+    $orderItems = [
+        [
+            'name' => str_replace(' ', '_', 'Order item name'), // Replace spaces with '_' , no space allowed
+            'qty' => 1,
+            'price' => '123',
+        ]
+    ];
+
     $data = [
         'first_name'   => 'Alice',
         'last_name'    => 'Smith',
@@ -85,10 +94,10 @@ public function pay()
         'cancel_url'   => route('cart'),
     ];
 
-    $response = Payerurl::payment($invoiceId, $amount, $currency, $data);
+    $response = Payerurl::payment($invoiceId, $amount, $currency, $data, $orderItems);
 
     if ($response['status']) {
-        return redirect($response['redirectUrl']);
+        return redirect()->away($response['redirectUrl']);
     }
 
     return back()->with('error', $response['message']);
